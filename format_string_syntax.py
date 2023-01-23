@@ -96,10 +96,30 @@ def format_scientific_notation():
     the_string = "The value: {0:g} or {0:.3g}.".format(75483757592.01)
     print(the_string)
 
+def format_bases():
+    """Use formatting to other base representations"""
+    x_dec = 23  # '0b10111'
+    print(f"Binary: {x_dec:b}")
+    print(f"Decimal: {x_dec:d}")    # default is 'd'
+    print(f"Octal: {x_dec:o}")
+    print(f"Hexadecimal: {x_dec:x}")
+
+    x_dec = 0b0110
+    print(f"Binary: {x_dec:b}")
+    print(f"Decimal: {x_dec:}")
+    print(f"Octal: {x_dec:o}")
+    print(f"Hexadecimal: {x_dec:x}")
+
+    x_dec = 0xFF
+    print(f"Binary: {x_dec:b}")
+    print(f"Decimal: {x_dec:}")
+    print(f"Octal: {x_dec:o}")
+    print(f"Hexadecimal: {x_dec:x}")
 
 if __name__ == "__main__":
     # field_names()
     # format_width_and_padding()
     # format_with_precision()
     # format_percentage()
-    format_scientific_notation()
+    # format_scientific_notation()
+    format_bases()
