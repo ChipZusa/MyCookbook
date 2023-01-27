@@ -76,7 +76,7 @@ def related_pathlib_functions():
     print(f"Using is_dir() we get: {hi_desk.is_dir()}")
 
 def check_if_path_exists(the_path):
-    """###Demo of methods exists(), is_file(), and is_dir()"""
+    """Demo of methods exists(), is_file(), and is_dir()"""
     if the_path.exists():
         check_if_file_or_directory(the_path)
     else:
