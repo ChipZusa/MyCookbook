@@ -1,8 +1,9 @@
 #! /usr/bin/env python3
 """Created by chris at 1/26/23
 
-Creating Path Objects From Strings, methods home() and cwd(),
-and the method joinpath() and its short cut slash operator
+1. Creating Path Objects From Strings, methods home() and cwd(),
+    and the method joinpath() and its short cut slash operator
+2. Using exists(), is_file(), and is_dir()
 """
 import pathlib
 
@@ -47,7 +48,62 @@ def create_path_object():
     joined_path = a_path.joinpath("Documents", "test.txt")
     print(f"The joined path is '{joined_path}'")
 
+def related_pathlib_functions():
+    """Demo of exists(), is_file(), and is_dir()"""
+    path_home = pathlib.Path.home()
+    path_desktop = path_home / "Desktop"
+    path_docs = path_home / "Documents"
+
+    hi_desk = path_desktop / "hello.txt"
+    hi_docs = path_docs / "hello.txt"
+
+    print(repr(hi_desk))
+    print(repr(hi_docs))
+
+    print(f"hi_desk exists? {hi_desk.exists()}")
+    print(f"hi_docs exists? {hi_docs.exists()}")
+    print()
+    print("Check if hello.txt is a file or directory")
+    print(f"Is hello.txt a file? {hi_docs.is_file()}")
+    print(f"Is hello.txt a directory? {hi_docs.is_dir()}")
+    print(f"Is Documents a directory? {path_docs.is_dir()}")
+    print(f"Is Documents a file? {path_docs.is_file()}")
+
+    # One gotcha to remember
+    # is_file and is_dir return False if the path does not exist
+    print(f"Using exists() we get: {hi_desk.exists()}")
+    print(f"Using is_file() we get: {hi_desk.is_file()}")
+    print(f"Using is_dir() we get: {hi_desk.is_dir()}")
+
+def check_if_path_exists(the_path):
+    """###Demo of methods exists(), is_file(), and is_dir()"""
+    if the_path.exists():
+        check_if_file_or_directory(the_path)
+    else:
+        print(f"The path '{the_path}' does not exist.")
+
+def check_if_file_or_directory(the_path):
+    """Demo of is_file() and is_dir"""
+    # the_path = pathlib.Path("This/bogus/path")
+    if the_path.exists() and the_path.is_file():
+        print(f"'{the_path}' is a file")
+    elif the_path.exists() and the_path.is_dir():
+        print(f"'{the_path}' is a directory")
+    else:
+        if not the_path.exists():
+            print(f"'{the_path}' does not exist")
 
 
 if __name__ == "__main__":
-    create_path_object()
+    # create_path_object()
+    some_path = pathlib.Path.cwd()
+    check_if_file_or_directory(some_path)
+    #
+    some_path = some_path / "zippitydo"
+    check_if_file_or_directory(some_path)
+    #
+    some_path = pathlib.Path.cwd() / __file__
+    check_if_file_or_directory(some_path)
+    # check_if_path_exists(some_path)
+    #
+    # related_pathlib_functions()
