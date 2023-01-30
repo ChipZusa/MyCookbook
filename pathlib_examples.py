@@ -48,7 +48,38 @@ def create_path_object():
     joined_path = a_path.joinpath("Documents", "test.txt")
     print(f"The joined path is '{joined_path}'")
 
-def related_pathlib_functions():
+
+def create_new_file():
+    """Demo of creating a new file using the instance
+        method Path.touch()"""
+    """Steps
+    1. Create a path for a directory
+    2. Ensure it is not already a directory (for learning)
+    3. Create the directory (using flag parents=True)
+    4. Create a file inside this new directory
+    """
+    #     1. Create a path for a directory
+    new_path_string = pathlib.Path.home()
+    new_dir_path = new_path_string / "practice" / "monthly_dir"
+    # print(new_dir_path)
+    #     2. Ensure it is not already a directory (for learning)
+    # print(new_dir_path.exists())
+    #     3. Create the directory
+    #       (using flag parents=True,
+    #       and exist_ok=True so I can rerun without errors)
+    new_dir_path.mkdir(exist_ok=True, parents=True)
+    # print(new_dir_path.is_dir())
+    #     4. Create a file inside this new directory
+    # So, create a january_path file inside of the monthly_dir, and I’ll call it "january.txt".
+    january_path = new_dir_path.joinpath("january.txt")
+    # print(january_path)
+
+    january_path.touch()    # file is finally created
+
+    print(f"'{january_path} exists: {january_path.exists()}")
+    print(f"...and '{january_path}' is a file: {january_path.is_file()}")
+
+def is_file_is_dir_and_exists():
     """Demo of exists(), is_file(), and is_dir()"""
     path_home = pathlib.Path.home()
     path_desktop = path_home / "Desktop"
@@ -96,14 +127,15 @@ def check_if_file_or_directory(the_path):
 
 if __name__ == "__main__":
     # create_path_object()
-    some_path = pathlib.Path.cwd()
-    check_if_file_or_directory(some_path)
+    # some_path = pathlib.Path.cwd()
+    # check_if_file_or_directory(some_path)
     #
-    some_path = some_path / "zippitydo"
-    check_if_file_or_directory(some_path)
+    # some_path = some_path / "zippitydo"
+    # check_if_file_or_directory(some_path)
     #
     some_path = pathlib.Path.cwd() / __file__
     check_if_file_or_directory(some_path)
     # check_if_path_exists(some_path)
     #
-    # related_pathlib_functions()
+    # is_file_is_dir_and_exists()
+    # create_new_file()
