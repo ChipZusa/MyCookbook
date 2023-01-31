@@ -6,7 +6,7 @@
 2. Using exists(), is_file(), and is_dir()
 """
 import pathlib
-
+from pathlib import Path
 
 def create_path_object():
     """Three ways to create objects that represent file paths"""
@@ -125,6 +125,67 @@ def check_if_file_or_directory(the_path):
             print(f"'{the_path}' does not exist")
 
 
+def iterate_over_directory():
+    # Create a path to a directory and ensure it exists
+    current_dir = pathlib.Path.cwd()
+    if not current_dir.exists():
+        print(f"Warning! Directory '{current_dir}' does not exist")
+
+    # Create a generator for iterating over the directory
+    current_iterable = current_dir.iterdir()
+    print(f"Type of current_iterable is: {type(current_iterable)}")
+
+    # and lets see them
+    for item in current_iterable:
+        print(item)
+    # or ... "for item in current_dir.iterdir()" in one step
+
+
+
+def rename_move():
+    """https://learnpython.com/blog/how-to-rename-files-python/"""
+    # define file path that we want to rename
+    filepath = Path.cwd() / "photos" / "shooting_star.png"
+    # rename file
+    filepath.rename(Path.cwd() / "photos" / "shooting_star2.png")
+
+    # define directory path that we want to rename
+    dir_path = Path.cwd() / "photos"
+    # change directory name
+    dir_path.rename(Path.cwd() / "pics")
+    print(filepath)
+    print(dir_path)
+
+def glob_over_directory():
+    """Given a relative pattern, yield all matching files"""
+    # Obtain a path to the directory to be searched
+    current_dir = pathlib.Path.cwd()
+
+    # Search for all "py" files
+    pattern = "*.py"
+    pattern1 = "[b][i][t][es].py"
+    pattern2 = "*.[p][y]"
+    pattern3 = "*.[pt][xy]*"
+    glob_generator = current_dir.glob(pattern3)
+    for _ in glob_generator:
+        print(_)
+
+    # Recursive into all lower directories
+    glob_generator = current_dir.glob("**/*.py")
+    # or
+    glob_generator = current_dir.rglob("*.py")
+
+def pathlib_shutil_copy_file():
+    """Combine use of pathlib and shutil to copy a file"""
+    from shutil import copyfile
+
+    source = Path('words.txt')
+    destination = Path('words_bck.txt')
+
+    copyfile(source, destination)
+
+
+
 if __name__ == "__main__":
     # create_path_object()
     # some_path = pathlib.Path.cwd()
@@ -139,3 +200,5 @@ if __name__ == "__main__":
     #
     # is_file_is_dir_and_exists()
     # create_new_file()
+    # iterate_over_directory()
+    rename_move()
