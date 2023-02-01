@@ -230,6 +230,25 @@ def delete_files_directories():
     # print(f"New file {file_path.name} exists: {file_path.exists()}")
 
 
+def pathlib_read_write_text():
+    """Use pathlib.write_text() to write data to the path in text mode"""
+    word_string = ("Now, that is a good looking turkey.\nIt "
+                   "makes you wonder how they\n"
+                   "get them so big.")
+
+    dir_path = pathlib.Path.cwd()
+    file_path = dir_path / "words.txt"
+    file_path.touch()
+
+    # write a string into the new file
+    file_path.write_text(word_string)
+
+    # return the decoded contents as a string using read_text)
+    file_contents = file_path.read_text()
+    print(file_contents)
+
+    # clean-up
+    file_path.unlink()
 
 
 if __name__ == "__main__":
@@ -248,4 +267,5 @@ if __name__ == "__main__":
     # create_new_file()
     # iterate_over_directory()
     # rename_move()
-    delete_files_directories()
+    # delete_files_directories()
+    pathlib_read_write_text()
