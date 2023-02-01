@@ -184,6 +184,52 @@ def pathlib_shutil_copy_file():
 
     copyfile(source, destination)
 
+def delete_files_directories():
+    import shutil
+
+    # using pathlib only - delete a file
+    # create a file for demo
+    file_path = pathlib.Path.cwd().joinpath("testfile.txt")
+    file_path.touch()
+    if not file_path.exists():
+        print(f"problem: {file_path.name} does not exist")
+
+    # delete file
+    file_path.unlink()
+    # print(f"File {file_path.name} exists: {file_path.exists()}")
+
+    # create a dir for demo
+    dir_path = pathlib.Path.cwd() / "test_dir"
+    dir_path.mkdir(exist_ok=True)
+    if not dir_path.exists():
+        print(f"problem: {dir_path.name} does not exist")
+
+    # delete the directory
+    dir_path.rmdir()
+
+    if dir_path.exists():
+        print(f"OOps. Directory {dir_path.name} exists: {dir_path.exists()}")
+
+    # using shutil -- delete a non-empty directory
+    # create a new dir
+    dir_path = pathlib.Path.cwd() / "test_dir"
+    dir_path.mkdir()
+    if not dir_path.exists():
+        print(f"problem: {dir_path.name} does not exist")
+    # add a file to the dir
+    file_path = dir_path / "the_test_file.txt"
+    file_path.touch()
+    # check if exists()
+    # print(f"New directory {dir_path.name} exists: {dir_path.exists()}")
+    # print(f"New file {file_path.name} exists: {file_path.exists()}")
+
+    # delete the dir while still containing the file (using shutil)
+    shutil.rmtree(dir_path)
+
+    # print(f"New directory {dir_path.name} exists: {dir_path.exists()}")
+    # print(f"New file {file_path.name} exists: {file_path.exists()}")
+
+
 
 
 if __name__ == "__main__":
@@ -201,4 +247,5 @@ if __name__ == "__main__":
     # is_file_is_dir_and_exists()
     # create_new_file()
     # iterate_over_directory()
-    rename_move()
+    # rename_move()
+    delete_files_directories()
