@@ -2,8 +2,8 @@
 """Created by chris at 2/2/23
 
 Using property() to access attributes
-    - step-by-step development with a final version Person
-    - a templage "prop" class is included at the end
+    step-by-step development with a final version Person
+    a template "prop" class is included at the end
 Ref: https://www.pythontutorial.net/python-oop/python-properties/
 Using @property to access attribures
 Ref: https://www.pythontutorial.net/python-oop/python-property-decorator/
