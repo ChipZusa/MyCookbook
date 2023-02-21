@@ -250,6 +250,9 @@ def pathlib_read_write_text():
     # clean-up
     file_path.unlink()
 
+def current_filename():
+    the_path = pathlib.Path(__file__)
+    print(the_path.name)
 
 if __name__ == "__main__":
     # create_path_object()
@@ -259,8 +262,8 @@ if __name__ == "__main__":
     # some_path = some_path / "zippitydo"
     # check_if_file_or_directory(some_path)
     #
-    some_path = pathlib.Path.cwd() / __file__
-    check_if_file_or_directory(some_path)
+    # some_path = pathlib.Path.cwd() / __file__
+    # check_if_file_or_directory(some_path)
     # check_if_path_exists(some_path)
     #
     # is_file_is_dir_and_exists()
@@ -268,4 +271,5 @@ if __name__ == "__main__":
     # iterate_over_directory()
     # rename_move()
     # delete_files_directories()
-    pathlib_read_write_text()
+    # pathlib_read_write_text()
+    current_filename()
