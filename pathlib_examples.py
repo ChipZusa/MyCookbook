@@ -251,8 +251,16 @@ def pathlib_read_write_text():
     file_path.unlink()
 
 def current_filename():
+    """Use pathlib and os.path to retrieve current file name"""
+    import pathlib
+    import os.path
+
     the_path = pathlib.Path(__file__)
-    print(the_path.name)
+    print(f"absolute name:\n    {the_path}")
+    print(f"final path component:\n   {the_path.name}")
+    print(f"if symbolic link, real path is:\n    {os.path.realpath(the_path)}")
+
+
 
 if __name__ == "__main__":
     # create_path_object()
