@@ -126,7 +126,6 @@ class MainWindow(QMainWindow):
             print("Success!")
         else:
             print("Cancel!")
-        # todo: how to test for accept/reject in the dlg?
 
     def button_ok_clicked(self, s):
         """slot method to show a response"""
@@ -142,7 +141,6 @@ class MainWindow(QMainWindow):
             print("Success!")
         else:
             print("Cancel!")
-        # todo: how to test for accept/reject in the dlg?
 
     def button_save_clicked(self, s):
         """slot method to show a response"""
@@ -158,7 +156,6 @@ class MainWindow(QMainWindow):
             print("Success!")
         else:
             print("Cancel!")
-        # todo: how to test for accept/reject in the dlg?
 
 
 class SaveDialog(QDialog):
@@ -340,7 +337,6 @@ class YesToAllDialog(QDialog):
 
 
 if __name__ == "__main__":
-    # todo: When you click the button to launch the dialog, you may n
     # --> force message to appear over parent.
     app = QApplication(sys.argv)
 
