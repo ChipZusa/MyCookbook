@@ -256,9 +256,7 @@ class OkDialog(QDialog):
 
 
 class OpensaveabortDialog(QDialog):
-    """for OK and CANCEL
-    ... also try with standard buttons instead of a
-    buttonBox"""
+    """Uses custom slots instead of the default accept/reject actions"""
 
     def __init__(self, parent=None):
         super().__init__(parent)
